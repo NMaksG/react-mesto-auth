@@ -10,7 +10,6 @@ export default function PopupWithForm({ name, isOpen, onClose, title, onSubmit, 
           name={`popup-form-${name}`}
           id={`${name}-form`}
           onSubmit={onSubmit}
-          noValidate
         >
           {children}
           <button className="popup__submit-button" type="submit">{buttonText}</button>

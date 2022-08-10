@@ -31,7 +31,6 @@ export default function Login({ onLogin }) {
           name="popup-form-name"
           id="name-form"
           onSubmit={handleSubmit}
-          noValidate
         >
             <input
               required

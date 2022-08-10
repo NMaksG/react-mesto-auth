@@ -9,7 +9,7 @@ import AddPlacePopup from "./AddPlacePopup.js";
 import ImagePopup from './ImagePopup.js';
 import api from "../utils/Api.js";
 import { CurrentUserContext } from '../context/CurrentUserContext.js';
-import { Redirect, Route, Switch, useHistory } from "react-router-dom";
+import { Route, Switch, useHistory } from "react-router-dom";
 import Register from "./Register.js";
 import Login from "./Login.js";
 import InfoTooltip from "./InfoTooltip.js";
@@ -53,7 +53,7 @@ function App() {
       .catch((err) => {
         console.log(err);
       });
-    }, []);
+    }, [loggedIn]);
 
   function handleCardClick(card) {
     setSelectedCard(card);
@@ -165,6 +165,8 @@ function App() {
       localStorage.setItem('jwt', res.token);
     })
     .catch((err) => {
+      setIsInfoTooltipPopupOpen(true);
+      setIsInfoTooltip(false);
       console.log(err);
     });
   }
@@ -226,9 +228,6 @@ function App() {
         <Route path="/sign-in">
           <Login onLogin={handleLogin} />
         </Route>
-        <Route>
-          {loggedIn ? <Redirect to="/" /> : <Redirect to="/sign-in" />}
-        </Route>
       </Switch>
       <Footer />
       <ImagePopup card={selectedCard} onClose={closeAllPopups} />
@@ -236,6 +235,8 @@ function App() {
       <AddPlacePopup isOpen={isAddPlacePopupOpen} onClose={closeAllPopups} onAddPlace={handleAddPlaceSubmit} />
       <EditAvatarPopup isOpen={isEditAvatarPopupOpen} onClose={closeAllPopups} onUpdateAvatar={handleUpdateAvatar} />
       <InfoTooltip
+        okText="Вы успешно зарегистрировались!"
+        errorText="Что-то пошло не так! Попробуйте ещё раз."
         isOpen={isInfoTooltipPopupOpen}
         isInfoTooltip={isInfoTooltip}
         onClose={closeAllPopups}
