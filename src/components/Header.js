@@ -9,6 +9,10 @@ export default function Header({ userData, onLogout, onMenuClick, isMenuOpen, on
 
   function handleMenuCloseClick() {
     onMenuCloseClick();
+  }
+  
+  function handleMenuCloseLogout() {
+    onMenuCloseClick();
     onLogout();
   }
 
@@ -16,7 +20,7 @@ export default function Header({ userData, onLogout, onMenuClick, isMenuOpen, on
   <header className="header">
     <div className={`header__login header__login_menu ${isMenuOpen && 'header__login-active'}`}>
       {userData}
-      <p className="header__link header__link_menu header__link_color" onClick={handleMenuCloseClick}>Выйти</p>
+      <p className="header__link header__link_menu header__link_color" onClick={handleMenuCloseLogout}>Выйти</p>
     </div>
     <div className="header__container">
     <a href="##"><img className="header__logo" src={logoHeader} alt="Логотип Место"/></a>

@@ -38,21 +38,23 @@ function App() {
   const history = useHistory();
 
   React.useEffect(() => {
-    api.getUserInfo()
-      .then((res) => {
-        setCurrentUser(res);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-      
+    if(loggedIn) {
+      api.getUserInfo()
+        .then((res) => {
+          setCurrentUser(res);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+        
       api.getInitialCards()
-      .then((res) => {
-        setCards(res);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+        .then((res) => {
+          setCards(res);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+        }
     }, [loggedIn]);
 
   function handleCardClick(card) {
