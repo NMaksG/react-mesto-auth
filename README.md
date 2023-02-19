@@ -27,4 +27,4 @@
 * Создание бэкенда приложения на Nodejs
 
 ## *Ссылка на проект*
-[react-mesto-auth](https://github.com/NMaksG/mesto-react.git)
+[react-mesto-auth](https://nmaksg.github.io/react-mesto-auth/)
